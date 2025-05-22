@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe Wallet - Wireframe</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
+    header, footer { background: #fff; padding: 1.5rem 3rem; border-bottom: 1px solid #ddd; }
+    header { display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    nav { display: flex; gap: 2.5rem; }
+    nav div { position: relative; }
+    nav div:hover ul { display: block; }
+    nav a { text-decoration: none; color: #222; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 4px; transition: background 0.2s; }
+    nav a:hover { background: #f0f4ff; }
+    nav ul { display: none; position: absolute; top: 2.8rem; left: 0; background: #fff; border: 1px solid #ddd; list-style: none; padding: 0.5rem 0; min-width: 200px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); border-radius: 6px; z-index: 10; }
+    nav ul li { padding: 0.5rem 1rem; }
+    nav ul li a { font-weight: 500; color: #333; }
+    main { padding: 3rem 1.5rem 2rem 1.5rem; max-width: 1200px; margin: 2rem auto 0 auto; }
+    .section { padding: 2.5rem 2rem; border-bottom: 1px solid #ccc; background: #fff; border-radius: 10px; margin-bottom: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .section:last-child { border-bottom: none; }
+    .section h2 { margin-bottom: 1.2rem; font-size: 2rem; }
+    .cta-buttons { display: flex; gap: 1.2rem; margin-top: 1.5rem; }
+    .cta { padding: 0.85rem 2rem; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 2px 8px rgba(0,82,255,0.07); transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+    .launch { background: #0052ff; color: white; }
+    .launch:hover { background: #003bb3; box-shadow: 0 4px 16px rgba(0,82,255,0.13); }
+    .contact { background: white; color: #0052ff; border: 2px solid #0052ff; }
+    .contact:hover { background: #f0f4ff; color: #003bb3; border-color: #003bb3; }
+    .hero { text-align: center; padding: 2.5rem 2rem 2.5rem 2rem; background: #fff; border-radius: 12px; margin-bottom: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 1.2rem; font-weight: 800; }
+    .hero p { font-size: 1.25rem; margin-bottom: 2.2rem; color: #444; }
+    .feature-grid, .persona-grid, .logo-grid { display: grid; gap: 2rem; }
+    .feature-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .persona-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .logo-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); align-items: center; }
+    .grid-item { background: #f7faff; padding: 1.5rem 1rem; border-radius: 8px; text-align: center; box-shadow: 0 1px 6px rgba(0,82,255,0.04); font-size: 1.1rem; font-weight: 500; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .placeholder-img { display: block; width: 100%; max-width: 120px; height: 60px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 0.5rem; background: #e9eef7; }
+    .hero-illustration { width: 100%; max-width: 420px; height: auto; margin: 0 auto 2rem auto; display: block; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,82,255,0.08); }
+    .persona-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.07); margin-bottom: 1rem; }
+    .feature-icon { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; margin-bottom: 0.7rem; box-shadow: 0 1px 6px rgba(0,82,255,0.07); background: #e9eef7; }
+    .testimonial { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+    .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    ul { margin-left: 1.2rem; margin-bottom: 0.5rem; }
+    li { margin-bottom: 0.5rem; line-height: 1.6; }
+    footer { margin-top: 3rem; text-align: center; font-size: 1rem; color: #777; padding: 2rem 1rem 1.5rem 1rem; border-radius: 0 0 12px 12px; box-shadow: 0 -2px 8px rgba(0,0,0,0.03); }
+    @media (max-width: 900px) {
+      main { padding: 2rem 0.5rem; }
+      .section, .hero { padding: 2rem 1rem; }
+      .feature-grid, .logo-grid { gap: 1rem; }
+      .persona-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      header, footer { padding: 1rem 0.5rem; }
+      nav { gap: 1rem; }
+      .cta-buttons { flex-direction: column; gap: 0.7rem; align-items: center; }
+      .hero h1 { font-size: 2rem; }
+      .section h2 { font-size: 1.3rem; }
+      .feature-grid, .logo-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>Safe</strong></div>
+    <nav>
+      <div><a href="#">Wallet</a></div>
+      <div>
+        <a href="#">Use&nbsp;Cases ▾</a>
+        <ul>
+          <li><a href="teams.html">Teams&nbsp;&amp;&nbsp;Institutions</a></li>
+          <li><a href="power-users.html">Power&nbsp;Users&nbsp;&amp;&nbsp;DeFi&nbsp;Pros</a></li>
+        </ul>
+      </div>
+      <div><a href="#">Developers</a></div>
+      <div><a href="#">Security</a></div>
+      <div><a class="cta launch" href="#">Launch App</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="https://placehold.co/420x220/0052ff/fff?text=Premium+Illustration" alt="Hero Illustration" class="hero-illustration" />
+      <h1>The Trusted Smart Wallet for Teams & Pros.</h1>
+      <p>Secure billions, approve in seconds, and tap the entire DeFi stack — all from one battle-tested smart wallet.</p>
+      <div class="cta-buttons">
+        <a class="cta launch" href="#">Launch Safe Wallet</a>
+        <a class="cta contact" href="#">Watch Demo</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Trusted by 300+ DAOs and Organizations</h2>
+      <p>Battle-tested by industry leaders – Safe secures assets for MakerDAO, Aave, Polygon, and more.</p>
+      <div class="logo-grid">
+        <div class="grid-item"><img src="https://placehold.co/120x60?text=Logo+1" alt="Logo 1" class="placeholder-img" /></div>
+        <div class="grid-item"><img src="https://placehold.co/120x60?text=Logo+2" alt="Logo 2" class="placeholder-img" /></div>
+        <div class="grid-item"><img src="https://placehold.co/120x60?text=Logo+3" alt="Logo 3" class="placeholder-img" /></div>
+        <div class="grid-item"><img src="https://placehold.co/120x60?text=Logo+4" alt="Logo 4" class="placeholder-img" /></div>
+        <div class="grid-item"><img src="https://placehold.co/120x60?text=Logo+5" alt="Logo 5" class="placeholder-img" /></div>
+        <div class="grid-item"><img src="https://placehold.co/120x60?text=Logo+6" alt="Logo 6" class="placeholder-img" /></div>
+      </div>
+    </section>
+
+    <section class="section persona-grid">
+      <div>
+        <img src="https://placehold.co/56x56/0052ff/fff?text=DAO" alt="DAO Avatar" class="persona-avatar" />
+        <h2>For DAOs, Funds, and Companies</h2>
+        <ul>
+          <li>Multi-sig security – No single point of failure</li>
+          <li>Custom workflows – Batch payouts, automate approvals</li>
+          <li>Proven in the field – Used by top protocols and funds</li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://placehold.co/56x56/0052ff/fff?text=User" alt="Power User Avatar" class="persona-avatar" />
+        <h2>For Power Users & Investors</h2>
+        <ul>
+          <li>DeFi at your fingertips – App Hub access</li>
+          <li>No seed phrase stress – Recoverable smart accounts</li>
+          <li>Advanced tools – Batch tx, MEV protection</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Core Features</h2>
+      <div class="feature-grid">
+        <div class="grid-item"><img src="https://placehold.co/48x48/0052ff/fff?text=MS" alt="Multi-Sig Icon" class="feature-icon" />Multi-Sig Security</div>
+        <div class="grid-item"><img src="https://placehold.co/48x48/0052ff/fff?text=DeFi" alt="DeFi Icon" class="feature-icon" />DeFi Integration</div>
+        <div class="grid-item"><img src="https://placehold.co/48x48/0052ff/fff?text=Batch" alt="Batch Icon" class="feature-icon" />Batch & Automate</div>
+        <div class="grid-item"><img src="https://placehold.co/48x48/0052ff/fff?text=Chain" alt="Multi-Chain Icon" class="feature-icon" />Multi-Chain Ready</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>More Secure Than Traditional Wallets</h2>
+      <p>Smart accounts with multi-user access and programmatic control. Safe beats hardware and browser wallets on functionality and protection.</p>
+    </section>
+
+    <section class="section">
+      <h2>Customer Stories</h2>
+      <div class="testimonial">
+        <img src="https://placehold.co/48x48/0052ff/fff?text=JD" alt="Jane Doe Avatar" class="testimonial-avatar" />
+        <p>"Safe gives us peace of mind and efficient control over our treasury." – Jane Doe, DAO Treasurer</p>
+      </div>
+      <div class="testimonial">
+        <img src="https://placehold.co/48x48/0052ff/fff?text=DI" alt="DeFi Investor Avatar" class="testimonial-avatar" />
+        <p>"It's like my personal DeFi command center with a safety net." – DeFi Investor</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Secure by Design</h2>
+      <p>Audited by Certora, OpenZeppelin. $240B in transactions processed securely. $1M bug bounty. Open source and formally verified.</p>
+    </section>
+
+    <section class="section">
+      <h2>Ready to Get Started?</h2>
+      <p>Join 5M+ users and DAOs using Safe Wallet for secure digital asset management.</p>
+      <div class="cta-buttons">
+        <a class="cta launch" href="#">Create Your Safe</a>
+        <a class="cta contact" href="#">Learn How to Set Up →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Products | Help Center | Blog | Docs | About | Governance | Terms | Privacy | Socials</p>
+    <p>&copy; 2025 Safe Global</p>
+  </footer>
+</body>
+</html>
