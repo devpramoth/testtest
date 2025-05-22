@@ -4,19 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Safe Wallet - Wireframe</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
-    header, footer { background: #fff; padding: 1.5rem 3rem; border-bottom: 1px solid #ddd; }
-    header { display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-    nav { display: flex; gap: 2.5rem; }
-    nav div { position: relative; }
-    nav div:hover ul { display: block; }
-    nav a { text-decoration: none; color: #222; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 4px; transition: background 0.2s; }
-    nav a:hover { background: #f0f4ff; }
-    nav ul { display: none; position: absolute; top: 2.8rem; left: 0; background: #fff; border: 1px solid #ddd; list-style: none; padding: 0.5rem 0; min-width: 200px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); border-radius: 6px; z-index: 10; }
-    nav ul li { padding: 0.5rem 1rem; }
-    nav ul li a { font-weight: 500; color: #333; }
+    footer { background: #fff; padding: 1.5rem 3rem; border-bottom: 1px solid #ddd; }
     main { padding: 3rem 1.5rem 2rem 1.5rem; max-width: 1200px; margin: 2rem auto 0 auto; }
     .section { padding: 2.5rem 2rem; border-bottom: 1px solid #ccc; background: #fff; border-radius: 10px; margin-bottom: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
     .section:last-child { border-bottom: none; }
@@ -51,8 +43,6 @@
       .persona-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     }
     @media (max-width: 600px) {
-      header, footer { padding: 1rem 0.5rem; }
-      nav { gap: 1rem; }
       .cta-buttons { flex-direction: column; gap: 0.7rem; align-items: center; }
       .hero h1 { font-size: 2rem; }
       .section h2 { font-size: 1.3rem; }
@@ -64,7 +54,7 @@
   <header>
     <div><strong>Safe</strong></div>
     <nav>
-      <div><a href="#">Wallet</a></div>
+      <div><a href="index.html">Wallet</a></div>
       <div>
         <a href="#">Use&nbsp;Cases ▾</a>
         <ul>
@@ -73,7 +63,7 @@
         </ul>
       </div>
       <div><a href="#">Developers</a></div>
-      <div><a href="#">Security</a></div>
+      <div><a href="security.html">Security</a></div>
       <div><a class="cta launch" href="#">Launch App</a></div>
     </nav>
   </header>
